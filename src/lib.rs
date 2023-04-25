@@ -20,7 +20,7 @@ pub async fn main() -> EventResult {
         .with(lookat_center(), vec3(0., 0., -20.))
         .spawn();
 
-                let mut EntityIdsArray = ArrayVec::<[EntityId; 100]>::new();
+                let mut entity_ids_array = ArrayVec::<[EntityId; 100]>::new();
         
 //    let EntityIdsArray : [EntityId; 100] = [new EntityId(); 100];
 
@@ -29,7 +29,7 @@ pub async fn main() -> EventResult {
             let f = i as f32;
             let g = j as f32;   
             
-            EntityIdsArray.push(Entity::new()
+            entity_ids_array.push(Entity::new()
             .with_merge(make_sphere())
             .with_default(cast_shadows())
             .with(sphere_radius(), 1.)
@@ -60,9 +60,9 @@ pub async fn main() -> EventResult {
          
         for j in 0..10 {
             for i in 0..10 {
-                let pos = entity::get_component(EntityIdsArray[j*10 + i], translation()).unwrap();
+                let pos = entity::get_component(entity_ids_array[j*10 + i], translation()).unwrap();
        
-                entity::set_component(EntityIdsArray[j*10 + i], translation(), Vec3 { x: pos.x, y: pos.y, z: f32::cos((j*10 + i) as f32 * rot.y) });
+                entity::set_component(entity_ids_array[j*10 + i], translation(), Vec3 { x: pos.x, y: pos.y, z: f32::cos((j*10 + i) as f32 * rot.y) });
             }
         }
         EventOk
