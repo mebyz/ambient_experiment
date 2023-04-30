@@ -4,3 +4,22 @@ author: Emmanuel BOTROS YOUSSEF FEISTHAUER (mebyz)
 branding:
   icon: 'thumbs-up'
   color: 'green'
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+runs-on: ubuntu-latest
+runs:
+  using: "composite"
+  steps:
+    - uses: engineerd/configurator@v0.0.1
+      with:
+        name: "ambient"
+        url: "https://github.com/AmbientRun/Ambient/releases/download/v0.1.1/ambient-x86_64-unknown-linux-gnu.zip"
+        pathInArchive: "ambient"
+    - name: rust_wasm_config
+      run: |
+        rustup target add --toolchain stable wasm32-wasi
+    - uses: actions/checkout@v3
+    - name: build
+      run: ambient build
+    - name: post_build_check
+      run: ls -al build/
