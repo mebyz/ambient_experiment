@@ -10,7 +10,7 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     runs-on: ubuntu-latest
     steps:
-      - uses: mebyz/ambient_experiment@1.0.0
+      - uses: mebyz/ambient_experiment
       #- uses: engineerd/configurator@v0.0.1
       #  with:
       #    name: "ambient"
