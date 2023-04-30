@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]  
 jobs:
-  configurator:
+  config:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     runs-on: ubuntu-latest
@@ -15,12 +15,13 @@ jobs:
           name: "ambient"
           url: "https://github.com/AmbientRun/Ambient/releases/download/v0.1.1/ambient-x86_64-unknown-linux-gnu.zip"
           pathInArchive: "ambient"
-      - name: Testing
+      - name: config
         run: |
           ambient --help
   build:
+    needs: config
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build
+    - name: buiild
       run: ambient build --verbose
