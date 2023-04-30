@@ -18,6 +18,9 @@ jobs:
       - name: config
         run: |
           ambient --help
+      - name: wasm_config
+        run: |
+          rustup target add --toolchain stable wasm32-wasi
       - uses: actions/checkout@v3
       - name: build
         run: ambient build
