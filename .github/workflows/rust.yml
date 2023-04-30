@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]  
 jobs:
-  config:
+  build:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     runs-on: ubuntu-latest
@@ -20,4 +20,4 @@ jobs:
           ambient --help
       - uses: actions/checkout@v3
       - name: build
-        run: ambient build --verbose
+        run: ambient build
