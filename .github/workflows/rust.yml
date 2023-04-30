@@ -15,12 +15,11 @@ jobs:
           name: "ambient"
           url: "https://github.com/AmbientRun/Ambient/releases/download/v0.1.1/ambient-x86_64-unknown-linux-gnu.zip"
           pathInArchive: "ambient"
-      - name: config
-        run: |
-          ambient --help
-      - name: wasm_config
+      - name: rust_wasm_config
         run: |
           rustup target add --toolchain stable wasm32-wasi
       - uses: actions/checkout@v3
       - name: build
         run: ambient build
+      - name: post_build_check
+        run: ls -al build/
