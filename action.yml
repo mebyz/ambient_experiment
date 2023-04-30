@@ -1,0 +1,6 @@
+name: ambient-build-action
+description: ambientRun/Ambient is a cutting edge multiplayer game engine. This is an action to build your ambient (Rust) code throught the ambient builder
+author: Emmanuel BOTROS YOUSSEF FEISTHAUER (mebyz)
+branding:
+  icon: 'thumbs-up'
+  color: 'green'
