@@ -6,6 +6,8 @@ on:
     branches: [ "main" ]  
 jobs:
   configurator:
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     runs-on: ubuntu-latest
     steps:
       - uses: engineerd/configurator@v0.0.1
@@ -14,8 +16,6 @@ jobs:
           url: "https://github.com/AmbientRun/Ambient/releases/download/v0.1.1/ambient-x86_64-unknown-linux-gnu.zip"
           pathInArchive: "ambient"
       - name: Testing
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         run: |
           ambient --help
   build:
